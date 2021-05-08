@@ -38,7 +38,7 @@ wire [4:0]	nextClutPacket	= rClutPacketCount + 5'd1;
 wire endCondition = (rClutPacketCount == (i_CLUTIs8BPP ? 5'd15 : 5'd0));
 always @(posedge i_clk)
 begin
-	if (i_rstGPU) begin
+	if (i_rstGPU || i_rstTextureCache) begin
 		RegCLUT						<= 16'h8000;	// Invalid CLUT ADR on reset.
 		lastBlockLoaded				<= 0;
 		rClutLoading				<= 1'b0;
