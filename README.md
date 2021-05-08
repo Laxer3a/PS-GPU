@@ -1,6 +1,8 @@
 # PS-GPU
 Re-Implementation of PS1 Game Console GPU in verilog.
 
+Top level file is : gpu.sv
+
 # Support feature
 - All commands are supported.
 - Interlaced rendering is supported.
