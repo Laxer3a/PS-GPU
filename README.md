@@ -14,3 +14,10 @@ GPU Re-Implementation for PS1 Game Console in verilog.
 # Detail
 - UV coordinate sampling and color rounding are not perfectly identical to the original but it is only visible through
   precise testing condition.
+
+# License
+
+PS-FPGA Licenses (DUAL License GPLv2 and commercial license)
+
+This PS-FPGA source code is copyright 2019 and licensed under the GNU General Public License v2.0, and a commercial licensing option.
+If you wish to use the source code from PS-FPGA, email laxer3a [at] hotmail [dot] com for commercial licensing.
