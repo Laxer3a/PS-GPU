@@ -9,7 +9,6 @@ If you wish to use the source code from PS-FPGA, email laxer3a [at] hotmail [dot
 See LICENSE file.
 ---------------------------------------------------------------------------------------------------------------------- */
 
-`include "profile.sv"
 `include "gpu_def.sv"
 
 module gpu_SM_render_mem(
@@ -106,7 +105,7 @@ module gpu_SM_render_mem(
 	output	[14:0]			o_stencilReadAdr,
 	input	[15:0]			i_stencilReadValue,
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 	output	[7:0]			o_prefetchU,
 	output	[7:0]			o_prefetchV,
 `endif
@@ -429,7 +428,7 @@ gpu_setupunit gpu_setupunit_inst(
 	.i_scanDirectionR2L				(nextDir),
 	.i_dirReg						(dir),
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 	.o_prefetchU					(o_prefetchU),
 	.o_prefetchV					(o_prefetchV),
 `endif

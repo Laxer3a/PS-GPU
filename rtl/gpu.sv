@@ -10,7 +10,6 @@ See LICENSE file.
 ---------------------------------------------------------------------------------------------------------------------- */
 
 `include "gpu_def.sv"
-`include "profile.sv"
 
 /*
     POSSIBLE OPTIMIZATION :
@@ -58,7 +57,7 @@ module gpu
 	input            gpu_p2m_accept_o,
 	
 //	output	[31:0]	mydebugCnt,
-`ifdef LAXER_STUFF
+`ifdef LAXER
 	output          dbg_canWrite,
 	output			dbg_error,
 	output	[6:0]	dbg_busy,
@@ -296,7 +295,7 @@ wire        isFifoEmpty32  = ~inst_fifo_ready_w;
 // Command parser / cpu2vram can pop FIFO
 assign      inst_fifo_pop_w = readFifo | accept_cv_data_w;
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 assign dbg_canWrite = canWriteFIFO;
 `endif
 
@@ -358,7 +357,7 @@ wire		activateFill;
 //---------------------------------------------------------------
 wire [15:0]	stencilReadValue16;
 wire stencilError;
-`ifdef LAXER_STUFF
+`ifdef LAXER
 assign dbg_error = stencilError; // TODO : should be sticky bit for LED ? done outside I guess...
 `endif
 
@@ -1025,7 +1024,7 @@ gpu_SM_FILL_mem gpu_SM_FILL_mem_inst(
 //		- Render
 // ------------------------------------------------------------------------------------------
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 wire [7:0] prefetchU,prefetchV;
 `endif
 
@@ -1125,7 +1124,7 @@ gpu_SM_render_mem gpu_SM_render_mem_inst(
 	.i_stencilReadValue				(stencilReadValue16),
 
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 	// -----------------------------------
 	// PREFETCH UV
 	// -----------------------------------
@@ -1149,7 +1148,7 @@ gpu_SM_render_mem gpu_SM_render_mem_inst(
     .o_dataOut						(rdr_mem_dataOut)
 );
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 wire [18:0] adrTexPrefetch;
 // Prefetch thing...
 TEXUnit TEXUnitPrefetch(
@@ -1347,7 +1346,7 @@ begin
 end
 endfunction
 
-`ifdef LAXER_STUFF
+`ifdef LAXER
 assign dbg_busy = { o_command, isRenderActive , isCopyVCActive , isCopyCVActive , isCopyVVActive , isFILLActive , inst_fifo_ready_w };
 `endif
 

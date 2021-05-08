@@ -1,4 +1,13 @@
-`include "profile.sv"
+/* ----------------------------------------------------------------------------------------------------------------------
+
+PS-FPGA Licenses (DUAL License GPLv2 and commercial license)
+
+This PS-FPGA source code is copyright 2019 Romain PIQUOIS and licensed under the GNU General Public License v2.0, 
+ and a commercial licensing option.
+If you wish to use the source code from PS-FPGA, email laxer3a [at] hotmail [dot] com for commercial licensing.
+
+See LICENSE file.
+---------------------------------------------------------------------------------------------------------------------- */
 
 module gpu_stencil_cache
 (
@@ -223,8 +232,8 @@ end
 
 assign stencil_rd_value_o = selOut;
 
-`ifdef ULTRA
 `ifdef verilator
+`ifndef LAXER
 function write; /* verilator public */
 input  [31:0]   addr;
 input  [15:0]   data;
@@ -271,8 +280,8 @@ begin
     endcase
 end
 endfunction
-`endif
-`endif // [ifdef ULTRA] Else fail my visual C++ setup, need to patch manually the C++ generated code each time.
+`endif // [ifndef LAXER] Else fail my visual C++ setup, need to patch manually the C++ generated code each time.
+`endif 
 
 
 endmodule
