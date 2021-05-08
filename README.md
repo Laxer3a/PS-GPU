@@ -1,5 +1,5 @@
 # PS-GPU
-GPU Re-Implementation for PS1 Game Console in verilog.
+Re-Implementation of PS1 Game Console GPU in verilog.
 
 # Support feature
 - All commands are supported.
