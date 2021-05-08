@@ -9,7 +9,6 @@ If you wish to use the source code from PS-FPGA, email laxer3a [at] hotmail [dot
 See LICENSE file.
 ---------------------------------------------------------------------------------------------------------------------- */
 
-
 module dividerWrapper#(
 	parameter OUTSIZE  = 20
 )
@@ -40,23 +39,8 @@ module dividerWrapper#(
     wire signed [31:0] resultDiv = num5 / divisor;
     assign outputV = resultDiv[OUTSIZE-1:0];
 `else
-//-----------------------------------------------------------------
-// Altera
-//-----------------------------------------------------------------
-`ifdef INTEL_FPGA
-    wire signed [21:0] remain_sig;
-    wire signed [31:0] quot;
-    div6    div6_inst (
-        .clock ( clock ),
-        .denom ( denominator ),
-        .numer ( numerator ),
-        .quotient ( quot ),
-        .remain ( remain_sig )
-    );
-    assign outputV = quot[OUTSIZE-1:0];
-`else
     //-----------------------------------------------------------------
-    // Xilinx
+    // Generic Division Verilog
     //-----------------------------------------------------------------
     wire [31:0] resultDiv;
 
@@ -73,7 +57,5 @@ module dividerWrapper#(
     );
 
     assign outputV = resultDiv[OUTSIZE-1:0];
-
-`endif
 `endif
 endmodule

@@ -1,3 +1,14 @@
+/* ----------------------------------------------------------------------------------------------------------------------
+
+PS-FPGA Licenses (DUAL License GPLv2 and commercial license)
+
+This PS-FPGA source code is copyright 2019 Romain PIQUOIS and licensed under the GNU General Public License v2.0, 
+ and a commercial licensing option.
+If you wish to use the source code from PS-FPGA, email laxer3a [at] hotmail [dot] com for commercial licensing.
+
+See LICENSE file.
+---------------------------------------------------------------------------------------------------------------------- */
+
 module gpu_masking(
 	input	[3:0]	RegX0_4bit,
 	input	[3:0]	RegSizeW_4bit,
@@ -54,7 +65,6 @@ begin
 	default: maskRight = 16'b0111_1111_1111_1111;
 	endcase
 end
-
 
 wire isFirstSegmentMask		= (i_adrXSrc == 6'd0);
 wire isLastSegmentMask 		= (i_adrXSrc == i_lengthBlkSrcHM1_6bit);

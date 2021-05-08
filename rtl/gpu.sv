@@ -76,6 +76,10 @@ module gpu
     output [  8:0]  display_y_o,
     output          display_interlaced_o,
     output          display_pal_o,
+	
+	// FUTURE TODO : export GPU_REG_RangeX0,GPU_REG_RangeX1,GPU_REG_RangeY0,GPU_REG_RangeY1
+	// For more advanced display stuff in some games (cropping)
+	
     // Display -> GPU
     input           display_field_i,
     input           display_hblank_i,
